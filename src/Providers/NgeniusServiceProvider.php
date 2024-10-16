@@ -140,7 +140,10 @@ class NgeniusServiceProvider extends ServiceProvider
         );
 
         
-        $this->app->bind('ngenius',fn($app)=>new NgeniusFacades($app));
+        // Use the traditional closure syntax
+        $this->app->bind('ngenius', function($app) {
+            return new NgeniusFacades($app);
+        });
 
         $this->app->alias('ngenius', NgeniusFacades::class);
 
